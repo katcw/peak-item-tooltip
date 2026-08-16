@@ -5,6 +5,9 @@
 bin/
 obj/
 
+# stray built plugin
+/peak-item-tooltip.dll
+
 # visual studio
 .vs/
 *.user

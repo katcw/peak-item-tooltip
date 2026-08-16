@@ -1,0 +1,9 @@
+{
+  "name": "PeakItemTooltip",
+  "version_number": "0.1.0",
+  "website_url": "https://github.com/katcw/peak-item-tooltip",
+  "description": "Shows a tooltip with item type, description and status effects when you hover or hold an item",
+  "dependencies": [
+    "BepInEx-BepInExPack_PEAK-5.4.75301"
+  ]
+}

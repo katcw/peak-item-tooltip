@@ -20,7 +20,7 @@
 
   <!-- curated defaults baked into the dll; written out on first run -->
   <ItemGroup>
-    <EmbeddedResource Include="default-descriptions.json" />
+    <EmbeddedResource Include="assets/default-descriptions.json" />
   </ItemGroup>
 
   <ItemGroup>
