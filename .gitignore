@@ -1,0 +1,18 @@
+# claude
+.claude/
+
+# build output
+bin/
+obj/
+
+# visual studio
+.vs/
+*.user
+*.suo
+
+# rider
+.idea/
+
+# os
+Thumbs.db
+.DS_Store
