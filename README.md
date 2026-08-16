@@ -12,11 +12,7 @@
 #### 👉🏻 features
 ➜ quite simple for now: the mod will show an item tooltip whenever you hold or hover over an item, giving you its item type, a brief description and its modifier effects (if any)
 
-<div align="center", width = "100%">
-  <img width="300" height="180" alt="image" src="https://github.com/user-attachments/assets/41ce7708-417e-4227-b534-fe42182479a1" />
-  <img width="300" height="180" alt="image" src="https://github.com/user-attachments/assets/ecbf0880-2386-41db-9c34-4032b7d39364" />
-  <img width="300" height="180" alt="image" src="https://github.com/user-attachments/assets/0169b170-6034-4be0-a85a-5faf93db0233" />
-</div>
+<img width="1200" height="400" alt="peak-item-tooltip • repo banner" src="https://github.com/user-attachments/assets/5dc5a896-bf1f-409d-8f44-50846f1f4da4" />
 
 ***
 #### 🛠️ configuration
