@@ -19,7 +19,7 @@
     },
     "AMULET_HEALING": {
       "type": "MYSTICAL",
-      "description": "On use, heals various negative status effects and applies invincivility for 10 seconds"
+      "description": "On use, heals various negative status effects and applies invincibility for 10 seconds"
     },
     "AMULET_INFINITESTAM": {
       "type": "MYSTICAL",
