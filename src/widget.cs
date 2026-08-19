@@ -42,10 +42,14 @@ namespace PeakItemTooltip
         // fixed rounded-panel style: corner radius (all four corners), white outline thickness, and its colour
         private const float CornerRadius = 12f;
         private const float BorderWidth = 2f;
-        private static readonly Color BorderColour = Color.white;
+        // fallback outline colour, used before ApplyConfig runs and when the configured hex fails to parse
+        private static readonly Color DefaultBorderColour = Color.white;
 
         private bool _built;
         private bool _visible;
+
+        // last BorderColour value we warned about, so a standing-invalid hex only logs once (ApplyConfig runs every show)
+        private string _lastBadBorderColour;
 
         /**
          * @brief stores the config the widget reads its layout and field values from
@@ -133,6 +137,17 @@ namespace PeakItemTooltip
             bg.a = _cfg.BackgroundOpacity.Value;
             _background.color = bg;
 
+            // outline: RGB from the BorderColour hex (falling back to white on a bad value), alpha from BorderOpacity
+            Color borderCol;
+            if (ColorUtility.TryParseHtmlString(_cfg.BorderColour.Value, out Color bc)) borderCol = bc;
+            else
+            {
+                borderCol = DefaultBorderColour;
+                WarnBadBorderColour(_cfg.BorderColour.Value);
+            }
+            borderCol.a = _cfg.BorderOpacity.Value;
+            _border.color = borderCol;
+
             // hide icon where there is no texture
             _iconGo.SetActive(_cfg.ShowIcon.Value && _icon.texture != null);
             _name.gameObject.SetActive(_cfg.ShowName.Value);
@@ -150,6 +165,17 @@ namespace PeakItemTooltip
             _modifiers.fontSize = _cfg.ModifierFontSize.Value;
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(_root);
+        }
+
+        /**
+         * @brief logs a warning about an unparseable BorderColour value
+         * @param value the raw BorderColour string that failed to parse
+         */
+        private void WarnBadBorderColour(string value)
+        {
+            if (value == _lastBadBorderColour) return;
+            _lastBadBorderColour = value;
+            Plugin.Log.LogWarning($"Could not parse BorderColour '{value}'; expected a hex colour like #FFFFFF. Falling back to white.");
         }
 
         /**
@@ -266,7 +292,7 @@ namespace PeakItemTooltip
             borderGo.AddComponent<LayoutElement>().ignoreLayout = true;
 
             _border = borderGo.AddComponent<ProceduralImage>();
-            _border.color = BorderColour;
+            _border.color = DefaultBorderColour;
             _border.BorderWidth = BorderWidth;
             _border.raycastTarget = false;
             FreeModifier borderRadius = borderGo.AddComponent<FreeModifier>();

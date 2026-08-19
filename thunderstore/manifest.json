@@ -1,6 +1,6 @@
 {
   "name": "Peak_Item_Tooltip",
-  "version_number": "0.1.0",
+  "version_number": "0.1.1",
   "website_url": "https://github.com/katcw/peak-item-tooltip",
   "description": "shows a tooltip with item type, description and status effects when you hover or hold an item",
   "dependencies": [

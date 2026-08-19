@@ -19,7 +19,7 @@ namespace PeakItemTooltip
     {
         public const string PluginGuid = "peak-item-tooltip";
         public const string PluginName = "peak-item-tooltip";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.1.1";
 
         internal static ManualLogSource Log;
 

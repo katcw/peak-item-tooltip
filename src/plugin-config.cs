@@ -28,6 +28,9 @@ namespace PeakItemTooltip
         public readonly ConfigEntry<float> Scale;
         public readonly ConfigEntry<float> Width;
         public readonly ConfigEntry<float> BackgroundOpacity;
+        // added border colour and opacity config settings
+        public readonly ConfigEntry<string> BorderColour;
+        public readonly ConfigEntry<float>  BorderOpacity;
 
         public readonly ConfigEntry<bool>  ShowIcon;
         public readonly ConfigEntry<bool>  ShowName;
@@ -64,6 +67,11 @@ namespace PeakItemTooltip
             Width = cfg.Bind("Widget", "Width", 320f, "Widget width in reference pixels; the description wraps to this width.");
             BackgroundOpacity = cfg.Bind("Widget", "BackgroundOpacity", 0.75f,
                 new ConfigDescription("Background panel opacity.",
+                new AcceptableValueRange<float>(0f, 1f)));
+            BorderColour = cfg.Bind("Widget", "BorderColour", "#FFFFFF",
+                "Colour of the outline around the widget, as a hex string (e.g. #FFFFFF, #808080). Alpha is controlled by BorderOpacity.");
+            BorderOpacity = cfg.Bind("Widget", "BorderOpacity", 1.0f,
+                new ConfigDescription("Opacity of the outline around the widget :)",
                 new AcceptableValueRange<float>(0f, 1f)));
 
             ShowIcon = cfg.Bind("Fields", "ShowIcon", true, "Show the item icon.");
